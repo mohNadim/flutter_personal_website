@@ -1,12 +1,11 @@
 import 'dart:math';
-
-import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_personal_website/app/modules/home/controllers/home_controller.dart';
 import 'package:flutter_personal_website/app/modules/home/views/widget/app_bar/appbar.dart';
 import 'package:flutter_personal_website/app/modules/home/views/widget/app_bar/appbar_child.dart';
-import 'package:flutter_personal_website/app/modules/home/views/widget/sections/about_me_section.dart';
+import 'package:flutter_personal_website/app/modules/home/views/widget/sections/about_me/about_me_section.dart';
 import 'package:flutter_personal_website/app/modules/home/views/widget/sections/main_section.dart';
+import 'package:flutter_personal_website/app/modules/home/views/widget/sections/skills_section.dart';
 import 'package:flutter_personal_website/core/constant/colors.dart';
 import 'package:flutter_personal_website/core/static_models/particle.dart';
 import 'package:get/get.dart';
@@ -25,12 +24,29 @@ class HomeView extends GetView<HomeController> {
       body: Stack(
         children: [
           MainLayer(),
+          // SectionPlaceholder(),
+          Obx(
+            () => SkillsSection(isAnimate: controller.isSkillsSectionAnimate.value,),
+          ),
+
+          Obx(
+            () => AboutMeSection(
+              isAnimate: controller.isAboutSectionAnimate.value,
+            ),
+          ),
+          Obx(
+            () => MainSection(
+              isAnimate: controller.isMainSectionAnimate.value,
+            ),
+          ),
           SingleChildScrollView(
+            controller: controller.scrollController,
             child: Column(
               children: [
-                MainSection(),
-                AboutMeSection(),
-                SectionPlaceholder(),
+                SizedBox(
+                  height: Get.height * 2,
+                  width: Get.width,
+                ),
               ],
             ),
           )
@@ -134,4 +150,3 @@ class SectionPlaceholder extends StatelessWidget {
     );
   }
 }
-
