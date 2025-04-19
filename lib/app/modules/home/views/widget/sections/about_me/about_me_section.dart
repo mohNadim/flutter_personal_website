@@ -19,15 +19,13 @@ class _AboutMeSectionState extends State<AboutMeSection>
   late AnimationController _controller;
   late Animation<Offset> moveDownToUpAnimation;
   late Animation<double> fadeAnimation;
-  final GlobalKey _textKey = GlobalKey();
-  double _textWidth = 0;
 
   @override
   void initState() {
     super.initState();
     _controller = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 1000),
+      duration: Duration(milliseconds: 700),
     );
 
     moveDownToUpAnimation = Tween<Offset>(
@@ -43,10 +41,6 @@ class _AboutMeSectionState extends State<AboutMeSection>
     fadeAnimation = Tween<double>(begin: 0, end: 1).animate(
       CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
     );
-
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      _getTextWidth();
-    });
   }
 
   @override
@@ -65,16 +59,6 @@ class _AboutMeSectionState extends State<AboutMeSection>
     }
   }
 
-  void _getTextWidth() {
-    final RenderBox? renderBox =
-        _textKey.currentContext?.findRenderObject() as RenderBox?;
-    if (renderBox != null && mounted) {
-      setState(() {
-        _textWidth = renderBox.size.width;
-      });
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -89,7 +73,9 @@ class _AboutMeSectionState extends State<AboutMeSection>
             opacity: fadeAnimation,
             child: SlideTransition(
               position: moveDownToUpAnimation,
-              child: SectionTitle(textKey: _textKey, textWidth: _textWidth, title: 'من أنا ؟',),
+              child: SectionTitle(
+                title: 'من أنا ؟',
+              ),
             ),
           ),
           Stack(

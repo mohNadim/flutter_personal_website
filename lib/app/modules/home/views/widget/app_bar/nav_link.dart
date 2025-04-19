@@ -84,8 +84,10 @@ class _NavLinkState extends State<NavLink> with SingleTickerProviderStateMixin {
             children: [
               TweenAnimationBuilder<Color?>(
                 tween: ColorTween(
-                  begin: Colors.white,
-                  end: widget.isHover ? AppColor.primaryColor : Colors.white,
+                  begin: AppColor.lightColor,
+                  end: widget.isHover
+                      ? AppColor.primaryColor
+                      : AppColor.lightColor,
                 ),
                 duration: const Duration(milliseconds: 300),
                 builder: (context, color, child) {

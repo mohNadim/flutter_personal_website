@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_personal_website/core/constant/skills_card.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
   List<RxBool> hoverStates = List.generate(4, (_) => false.obs);
+  List<RxBool> skillsHoverStates =
+      List.generate(skills.length, (_) => false.obs);
   RxDouble offset = 0.0.obs;
 
   final isMainSectionAnimate = false.obs;
@@ -56,11 +59,16 @@ class HomeController extends GetxController {
     if (_currentStep == 0) {
       isMainSectionAnimate.value = false;
       isAboutSectionAnimate.value = false;
+      isSkillsSectionAnimate.value = false;
     } else if (_currentStep == 1) {
       isMainSectionAnimate.value = true;
       isAboutSectionAnimate.value = true;
+      isSkillsSectionAnimate.value = false;
     } else if (_currentStep == 2) {
       isAboutSectionAnimate.value = false;
+      isSkillsSectionAnimate.value = true;
+    } else if (_currentStep == 3) {
+      isSkillsSectionAnimate.value = false;
     }
   }
 
@@ -77,6 +85,10 @@ class HomeController extends GetxController {
 
   void onHover(int index, bool value) {
     hoverStates[index].value = value;
+  }
+
+  void onHoverSkill(int index, bool value) {
+    skillsHoverStates[index].value = value;
   }
 
   bool isMobile() => Get.width < 600;

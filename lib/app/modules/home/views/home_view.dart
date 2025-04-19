@@ -7,6 +7,7 @@ import 'package:flutter_personal_website/app/modules/home/views/widget/sections/
 import 'package:flutter_personal_website/app/modules/home/views/widget/sections/main_section.dart';
 import 'package:flutter_personal_website/app/modules/home/views/widget/sections/skills_section.dart';
 import 'package:flutter_personal_website/core/constant/colors.dart';
+import 'package:flutter_personal_website/core/constant/skills_card.dart';
 import 'package:flutter_personal_website/core/static_models/particle.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -25,20 +26,7 @@ class HomeView extends GetView<HomeController> {
         children: [
           MainLayer(),
           // SectionPlaceholder(),
-          Obx(
-            () => SkillsSection(isAnimate: controller.isSkillsSectionAnimate.value,),
-          ),
 
-          Obx(
-            () => AboutMeSection(
-              isAnimate: controller.isAboutSectionAnimate.value,
-            ),
-          ),
-          Obx(
-            () => MainSection(
-              isAnimate: controller.isMainSectionAnimate.value,
-            ),
-          ),
           SingleChildScrollView(
             controller: controller.scrollController,
             child: Column(
@@ -49,7 +37,59 @@ class HomeView extends GetView<HomeController> {
                 ),
               ],
             ),
-          )
+          ),
+         
+         
+          Obx(
+            () => MainSection(
+              isAnimate: controller.isMainSectionAnimate.value,
+            ),
+          ),
+
+           Obx(
+            () => AboutMeSection(
+              isAnimate: controller.isAboutSectionAnimate.value,
+            ),
+          ),
+
+           Obx(
+            () => SkillsSection(
+              isAnimate: controller.isSkillsSectionAnimate.value,
+              homeController: controller,
+            ),
+          ),
+
+
+          // Obx(
+          //   () => Container(
+          //     width: 200,
+          //     child: SkillItem(
+          //       skill: skills[0],
+          //       isHover: controller.skillsHoverStates[0].value,
+          //       onHover: (value) => controller.onHoverSkill(0, value),
+          //     ),
+          //   ),
+          // ),
+
+          // MouseRegion(
+          //   cursor: SystemMouseCursors.click,
+          //   child: Positioned(
+          //     top: 500,
+          //     left: 200,
+          //     child: TweenAnimationBuilder<Color?>(
+          //       tween: ColorTween(
+          //         begin: Colors.amber,
+          //         end: Colors.blue,
+          //       ),
+          //       duration: Duration(milliseconds: 300),
+          //       builder: (context, value, child) => Container(
+          //         width: 50,
+          //         height: 50,
+          //         color: value,
+          //       ),
+          //     ),
+          //   ),
+          // ),
         ],
       ),
     );
