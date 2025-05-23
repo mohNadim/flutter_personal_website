@@ -8,4 +8,6 @@ class AppColor {
   static final Color darkColor = Color(0xFF2c3e50);
  
   static final Color lightColor = Color(0xFFecf0f1);
+  
+  static final Color darkBackgroundColor = Color(0xFF374859);
 }

@@ -4,7 +4,6 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
-import 'package:flutter_personal_website/core/constant/colors.dart';
 
 class Particle {
   final double startX;

@@ -6,8 +6,10 @@ class SectionTitle extends StatefulWidget {
   const SectionTitle({
     super.key,
     required String title,
+    this.bottomPadding = 60,
   }) : _title = title;
   final String _title;
+  final double bottomPadding;
 
   @override
   State<SectionTitle> createState() => _SectionTitleState();
@@ -16,16 +18,15 @@ class SectionTitle extends StatefulWidget {
 class _SectionTitleState extends State<SectionTitle> {
   final GlobalKey _textKey = GlobalKey();
 
-   double _textWidth = 0;
+  double _textWidth = 0;
 
-   @override
+  @override
   void initState() {
     super.initState();
 
-     WidgetsBinding.instance.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       _getTextWidth();
     });
-    
   }
 
   void _getTextWidth() {
@@ -41,7 +42,7 @@ class _SectionTitleState extends State<SectionTitle> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 60),
+      padding: EdgeInsets.only(bottom: widget.bottomPadding),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [

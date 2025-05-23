@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_personal_website/core/constant/colors.dart';
-import 'package:flutter_personal_website/core/static_models/about_me_model.dart';
+import 'package:flutter_personal_website/core/models/about_me_model.dart';
 import 'package:ionicons/ionicons.dart';
 
 List<AboutMeModel> aboutCards = [

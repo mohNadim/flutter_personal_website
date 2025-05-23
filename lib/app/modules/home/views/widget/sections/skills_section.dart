@@ -3,7 +3,7 @@ import 'package:flutter_personal_website/app/modules/home/controllers/home_contr
 import 'package:flutter_personal_website/app/modules/home/views/widget/sections/section_title.dart';
 import 'package:flutter_personal_website/core/constant/colors.dart';
 import 'package:flutter_personal_website/core/constant/skills_card.dart';
-import 'package:flutter_personal_website/core/static_models/skills_model.dart';
+import 'package:flutter_personal_website/core/models/skills_model.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -104,7 +104,7 @@ class _SkillsSectionState extends State<SkillsSection>
                 ),
               ),
 
-              Container(
+              SizedBox(
                 width: Get.width * 0.7,
                 child: Wrap(
                   spacing: 20,
@@ -188,7 +188,7 @@ class _SkillItemState extends State<SkillItem>
       widget.isHover ? _hoverController.forward() : _hoverController.reverse();
     }
   }
-
+  
   @override
   Widget build(BuildContext context) {
     return MouseRegion(

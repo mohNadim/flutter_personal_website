@@ -4,11 +4,11 @@ import 'package:flutter_personal_website/app/modules/home/controllers/home_contr
 import 'package:flutter_personal_website/app/modules/home/views/widget/app_bar/appbar.dart';
 import 'package:flutter_personal_website/app/modules/home/views/widget/app_bar/appbar_child.dart';
 import 'package:flutter_personal_website/app/modules/home/views/widget/sections/about_me/about_me_section.dart';
+import 'package:flutter_personal_website/app/modules/home/views/widget/sections/main_layer.dart';
 import 'package:flutter_personal_website/app/modules/home/views/widget/sections/main_section.dart';
+import 'package:flutter_personal_website/app/modules/home/views/widget/sections/project_section/projects_section.dart';
 import 'package:flutter_personal_website/app/modules/home/views/widget/sections/skills_section.dart';
 import 'package:flutter_personal_website/core/constant/colors.dart';
-import 'package:flutter_personal_website/core/constant/skills_card.dart';
-import 'package:flutter_personal_website/core/static_models/particle.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -38,135 +38,34 @@ class HomeView extends GetView<HomeController> {
               ],
             ),
           ),
-         
-         
+
           Obx(
             () => MainSection(
               isAnimate: controller.isMainSectionAnimate.value,
             ),
           ),
 
-           Obx(
+          Obx(
             () => AboutMeSection(
               isAnimate: controller.isAboutSectionAnimate.value,
             ),
           ),
 
-           Obx(
+          Obx(
             () => SkillsSection(
               isAnimate: controller.isSkillsSectionAnimate.value,
               homeController: controller,
             ),
           ),
 
-
-          // Obx(
-          //   () => Container(
-          //     width: 200,
-          //     child: SkillItem(
-          //       skill: skills[0],
-          //       isHover: controller.skillsHoverStates[0].value,
-          //       onHover: (value) => controller.onHoverSkill(0, value),
-          //     ),
-          //   ),
-          // ),
-
-          // MouseRegion(
-          //   cursor: SystemMouseCursors.click,
-          //   child: Positioned(
-          //     top: 500,
-          //     left: 200,
-          //     child: TweenAnimationBuilder<Color?>(
-          //       tween: ColorTween(
-          //         begin: Colors.amber,
-          //         end: Colors.blue,
-          //       ),
-          //       duration: Duration(milliseconds: 300),
-          //       builder: (context, value, child) => Container(
-          //         width: 50,
-          //         height: 50,
-          //         color: value,
-          //       ),
-          //     ),
-          //   ),
-          // ),
+          Obx(
+            () => ProjectsSection(
+              isAnimate: controller.isProjectSectionAnimate.value,
+              homeController: controller,
+            ),
+          ),
         ],
       ),
-    );
-  }
-}
-
-class MainLayer extends StatefulWidget {
-  const MainLayer({
-    super.key,
-  });
-
-  @override
-  State<MainLayer> createState() => _MainLayer();
-}
-
-class _MainLayer extends State<MainLayer> with SingleTickerProviderStateMixin {
-  late AnimationController _particlesController;
-
-  final int particleCount = 70;
-  late List<Particle> particles;
-
-  @override
-  void initState() {
-    super.initState();
-
-    //* controllers init
-
-    _particlesController = AnimationController(
-      vsync: this,
-      duration: Duration(seconds: 20),
-    );
-
-    particles = List.generate(
-      particleCount,
-      (index) =>
-          Particle(screenHeight: Get.height - 70, screenWidth: Get.width),
-    );
-
-    //* Perform Animations *//
-
-    _particlesController.repeat();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedBuilder(
-      animation: _particlesController,
-      builder: (context, child) {
-        return Container(
-          width: Get.width,
-          height: Get.height - 70,
-          color: AppColor.darkColor,
-          child: Stack(
-            children: [
-              //* Particles
-              ...particles.map(
-                (p) {
-                  return Positioned(
-                    top: p.startY +
-                        sin(_particlesController.value * 2 * pi + p.phase) * 30,
-                    left: p.startX +
-                        cos(_particlesController.value * 2 * pi + p.phase) * 30,
-                    child: Container(
-                      width: p.size,
-                      height: p.size,
-                      decoration: BoxDecoration(
-                        color: p.color,
-                        borderRadius: BorderRadius.circular(p.size / 2),
-                      ),
-                    ),
-                  );
-                },
-              ),
-            ],
-          ),
-        );
-      },
     );
   }
 }
