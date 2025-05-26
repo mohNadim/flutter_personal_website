@@ -54,7 +54,7 @@ class AppBarChild extends StatelessWidget {
                     href: '#home',
                     isHover: controller.hoverStates[0].value,
                     onHover: (value) => controller.onHover(0, value),
-                    // onTap: ,
+                    onTap: (){},
                   ),
                 ),
                 Obx(
