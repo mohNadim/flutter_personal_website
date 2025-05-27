@@ -13,7 +13,7 @@ class HomeController extends GetxController {
   final isProjectSectionAnimate = false.obs;
   final isContactSectionAnimate = false.obs;
 
-  List<RxBool> hoverStates = List.generate(4, (_) => false.obs);
+  List<RxBool> hoverStates = List.generate(5, (_) => false.obs);
   List<RxBool> skillsHoverStates =
       List.generate(skills.length, (_) => false.obs);
   List<RxBool> projectCardsHoverStates =
@@ -38,8 +38,6 @@ class HomeController extends GetxController {
     this.offset.value = offset;
 
     double triggerFactor = 0.3;
-
-    
 
     // About Section
     if (offset >= sectionHeight * 1 - sectionHeight * triggerFactor &&
@@ -78,6 +76,26 @@ class HomeController extends GetxController {
 
   void onHoverProjectCard(int index, bool value) {
     projectCardsHoverStates[index].value = value;
+  }
+
+  void goToMainSection() {
+    scrollController.animateTo(0,
+        duration: Duration(seconds: 1), curve: Curves.easeInOutQuint);
+  }
+
+  void goToAboutSection() {
+    scrollController.animateTo((sectionHeight + 60),
+        duration: Duration(seconds: 1), curve: Curves.easeInOutQuint);
+  }
+
+  void goToSkillsSection() {
+    scrollController.animateTo((sectionHeight + 60) * 2,
+        duration: Duration(seconds: 1), curve: Curves.easeInOutQuint);
+  }
+
+  void goToProjectsSection() {
+    scrollController.animateTo((sectionHeight + 60) * 3,
+        duration: Duration(seconds: 1), curve: Curves.easeInOutQuint);
   }
 
   @override
