@@ -1,3 +1,18 @@
+void main() {
+  List<String> names = ['Ali', 'Sara', 'Mohammed', 'Salma'];
+
+  // Filter names that start with the letter 'S'
+  List<String> namesStartingWithS = filterNamesStartingWith(names, 'S');
+
+  print('Names starting with S: $namesStartingWithS');
+}
+
+/// Returns a list of names that start with the given letter
+List<String> filterNamesStartingWith(List<String> names, String letter) {
+  return names.where((name) => name.startsWith(letter)).toList();
+}
+
+
 // // This is a basic Flutter widget test.
 // //
 // // To perform an interaction with a widget in your test, use the WidgetTester

@@ -53,7 +53,7 @@ class AppBarChild extends StatelessWidget {
                     title: 'تواصل معي',
                     isHover: controller.hoverStates[4].value,
                     onHover: (value) => controller.onHover(4, value),
-                    // onTap: () => controller.go
+                    onTap: () => controller.goToContactUsSection(),
                   ),
                 ),
                 Obx(

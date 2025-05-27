@@ -98,6 +98,11 @@ class HomeController extends GetxController {
         duration: Duration(seconds: 1), curve: Curves.easeInOutQuint);
   }
 
+  void goToContactUsSection() {
+    scrollController.animateTo((sectionHeight + 60) * 4,
+        duration: Duration(seconds: 1), curve: Curves.easeInOutQuint);
+  }
+
   @override
   void onClose() {
     scrollController.dispose();

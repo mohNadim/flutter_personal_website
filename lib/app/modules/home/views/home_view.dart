@@ -3,6 +3,7 @@ import 'package:flutter_personal_website/app/modules/home/controllers/home_contr
 import 'package:flutter_personal_website/app/modules/home/views/widget/app_bar/appbar.dart';
 import 'package:flutter_personal_website/app/modules/home/views/widget/app_bar/appbar_child.dart';
 import 'package:flutter_personal_website/app/modules/home/views/widget/sections/about_me/about_me_section.dart';
+import 'package:flutter_personal_website/app/modules/home/views/widget/sections/contact_us/contuct_us_section.dart';
 import 'package:flutter_personal_website/app/modules/home/views/widget/sections/main_layer.dart';
 import 'package:flutter_personal_website/app/modules/home/views/widget/sections/main_section.dart';
 import 'package:flutter_personal_website/app/modules/home/views/widget/sections/project_section/projects_section.dart';
@@ -145,146 +146,16 @@ class _HomeViewState extends State<HomeView>
                     homeController: controller,
                   ),
                 ),
-                // Obx(
-                //   () => ContactUs(
-                //     isAnimate: controller.isContactSectionAnimate.value,
-                //     homeController: controller,
-                //   ),
-                // ),
+                Obx(
+                  () => ContactUs(
+                    isAnimate: controller.isContactSectionAnimate.value,
+                    homeController: controller,
+                  ),
+                ),
               ],
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class ContactUs extends StatefulWidget {
-  const ContactUs({
-    super.key,
-    required this.isAnimate,
-    required this.homeController,
-  });
-
-  final bool isAnimate;
-  final HomeController homeController;
-
-  @override
-  State<ContactUs> createState() => _ContactUsState();
-}
-
-class _ContactUsState extends State<ContactUs>
-    with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
-  late Animation<Offset> slideToUpAnimation;
-  late Animation<Offset> slideToRightAnimation;
-  late Animation<Offset> slideToLeftAnimation;
-  late Animation<double> fadeAnimation;
-
-  @override
-  void initState() {
-    super.initState();
-
-    _controller = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 800),
-    );
-
-    slideToUpAnimation = Tween<Offset>(
-      begin: const Offset(0, 1),
-      end: Offset.zero,
-    ).animate(_controller);
-
-    slideToLeftAnimation = Tween<Offset>(
-      begin: const Offset(1, 0),
-      end: Offset.zero,
-    ).animate(_controller);
-
-    slideToRightAnimation = Tween<Offset>(
-      begin: const Offset(-1, 0),
-      end: Offset.zero,
-    ).animate(_controller);
-
-    fadeAnimation = Tween<double>(
-      begin: 0,
-      end: 1,
-    ).animate(_controller);
-  }
-
-  @override
-  void didUpdateWidget(covariant ContactUs oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (widget.isAnimate) {
-      _controller.forward();
-    } else {
-      _controller.reverse();
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: Get.width,
-      height: Get.height,
-      child: AnimatedBuilder(
-        animation: _controller,
-        builder: (context, _) {
-          return Center(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                FadeTransition(
-                  opacity: fadeAnimation,
-                  child: SlideTransition(
-                    position: slideToUpAnimation,
-                    child: const SectionTitle(
-                      title: "تواصل معي",
-                      bottomPadding: 0,
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 30),
-                Container(
-                  width: Get.width * 0.7,
-                  decoration: BoxDecoration(
-                    color: AppColor.darkBackgroundColor,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Column(
-                    children: [
-                      Row(
-                        children: [
-                          Lottie.asset("assets/plant.json", width: 400),
-                        ],
-                      )
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          );
-        },
-      ),
-    );
-  }
-}
-
-class SectionPlaceholder extends StatelessWidget {
-  const SectionPlaceholder({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: Get.width,
-      height: Get.height,
-      alignment: Alignment.center,
-      child: Text(
-        'سكشن جديد',
-        style: GoogleFonts.cairo(
-          fontSize: 30,
-          color: AppColor.lightColor,
-        ),
       ),
     );
   }
