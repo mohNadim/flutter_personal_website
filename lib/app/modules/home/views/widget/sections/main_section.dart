@@ -187,8 +187,9 @@ class _MainSectionState extends State<MainSection>
             return AnimatedBuilder(
               animation: _elementController,
               builder: (context, _) {
-                return SizedBox(
+                return Container(
                   height: Get.height - 70,
+                  constraints: 
                   child: Stack(
                     children: [
                       Align(
