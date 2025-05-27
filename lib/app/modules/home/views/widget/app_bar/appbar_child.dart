@@ -50,34 +50,6 @@ class AppBarChild extends StatelessWidget {
               children: [
                 Obx(
                   () => NavLink(
-<<<<<<< HEAD
-                    title: 'الرئيسية',
-                    href: '#home',
-                    isHover: controller.hoverStates[0].value,
-                    onHover: (value) => controller.onHover(0, value),
-                    onTap: (){},
-                  ),
-                ),
-                Obx(
-                  () => NavLink(
-                    title: 'عني',
-                    href: '#about',
-                    isHover: controller.hoverStates[1].value,
-                    onHover: (value) => controller.onHover(1, value),
-                  ),
-                ),
-                Obx(
-                  () => NavLink(
-                    title: 'مشاريعي',
-                    href: '#projects',
-                    isHover: controller.hoverStates[2].value,
-                    onHover: (value) => controller.onHover(2, value),
-                  ),
-                ),
-                Obx(
-                  () => NavLink(
-=======
->>>>>>> edits_branch
                     title: 'تواصل معي',
                     isHover: controller.hoverStates[4].value,
                     onHover: (value) => controller.onHover(4, value),

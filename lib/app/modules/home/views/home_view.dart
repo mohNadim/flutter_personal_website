@@ -11,19 +11,106 @@ import 'package:flutter_personal_website/app/modules/home/views/widget/sections/
 import 'package:flutter_personal_website/core/constant/colors.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ionicons/ionicons.dart';
 import 'package:lottie/lottie.dart';
 
-class HomeView extends GetView<HomeController> {
+class HomeView extends StatefulWidget {
   const HomeView({
     super.key,
     // required this.controller,
   });
 
-  // final HomeController controller;
+  @override
+  State<HomeView> createState() => _HomeViewState();
+}
+
+class _HomeViewState extends State<HomeView>
+    with SingleTickerProviderStateMixin {
+  final HomeController controller = Get.put<HomeController>(HomeController());
+  late AnimationController _animationController;
+  late Animation<Offset> _floatButtonAnimation;
+
+  @override
+  void initState() {
+    _animationController = AnimationController(
+      vsync: this,
+      duration: Duration(
+        seconds: 6,
+      ),
+    );
+
+    _floatButtonAnimation = TweenSequence<Offset>([
+      TweenSequenceItem(
+        tween: Tween(
+          begin: Offset(0, 0),
+          end: Offset(0, -0.1),
+        ),
+        weight: 1,
+      ),
+      TweenSequenceItem(
+        tween: Tween(
+          begin: Offset(0, -0.1),
+          end: Offset(0, 0),
+        ),
+        weight: 1,
+      ),
+      TweenSequenceItem(
+        tween: Tween(
+          begin: Offset(0, 0),
+          end: Offset(0, 0.1),
+        ),
+        weight: 1,
+      ),
+      TweenSequenceItem(
+        tween: Tween(
+          begin: Offset(0, 0.1),
+          end: Offset(0, 0),
+        ),
+        weight: 1,
+      ),
+    ]).animate(_animationController);
+
+    _animationController.repeat();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: AnimatedBuilder(
+        animation: _animationController,
+        builder: (context, _) {
+          return SlideTransition(
+            position: _floatButtonAnimation,
+            child: MouseRegion(
+              cursor: SystemMouseCursors.click,
+              child: InkWell(
+                onTap: controller.goToMainSection,
+                child: Container(
+                  height: 70,
+                  width: 60,
+                  decoration: BoxDecoration(
+                    color: AppColor.primaryColor,
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  child: Center(
+                    child: Icon(
+                      Ionicons.arrow_up,
+                      color: AppColor.darkBackgroundColor,
+                      size: 30,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          );
+        },
+      ),
       appBar: CustomAppBar(
         height: 70,
         child: AppBarChild(controller: controller),
