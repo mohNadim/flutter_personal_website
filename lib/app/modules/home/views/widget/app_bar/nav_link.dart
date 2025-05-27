@@ -6,14 +6,12 @@ class NavLink extends StatefulWidget {
   const NavLink({
     super.key,
     required this.title,
-    required this.href,
     required this.isHover,
     this.onHover,
     this.onTap,
   });
 
   final String title;
-  final String href;
   final bool isHover;
   final void Function(bool)? onHover;
   final void Function()? onTap;
@@ -110,7 +108,10 @@ class _NavLinkState extends State<NavLink> with SingleTickerProviderStateMixin {
                     child: Container(
                       height: 2,
                       width: _textWidth * _borderAnimation.value,
-                      color: AppColor.primaryColor,
+                      decoration: BoxDecoration(
+                        color: AppColor.primaryColor,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
                     ),
                   );
                 },

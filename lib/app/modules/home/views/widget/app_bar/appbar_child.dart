@@ -50,6 +50,7 @@ class AppBarChild extends StatelessWidget {
               children: [
                 Obx(
                   () => NavLink(
+<<<<<<< HEAD
                     title: 'الرئيسية',
                     href: '#home',
                     isHover: controller.hoverStates[0].value,
@@ -75,11 +76,43 @@ class AppBarChild extends StatelessWidget {
                 ),
                 Obx(
                   () => NavLink(
+=======
+>>>>>>> edits_branch
                     title: 'تواصل معي',
-                    href: '#contact',
-                    isHover: controller.hoverStates[3].value,
-                    onHover: (value) => controller.onHover(3, value),
+                    isHover: controller.hoverStates[4].value,
+                    onHover: (value) => controller.onHover(4, value),
+                    // onTap: () => controller.go
                   ),
+                ),
+                Obx(
+                  () => NavLink(
+                      title: 'مشاريعي',
+                      isHover: controller.hoverStates[3].value,
+                      onHover: (value) => controller.onHover(3, value),
+                      onTap: () => controller.goToProjectsSection()),
+                ),
+                Obx(
+                  () => NavLink(
+                      title: 'مهاراتي',
+                      isHover: controller.hoverStates[2].value,
+                      onHover: (value) => controller.onHover(2, value),
+                      onTap: () => controller.goToSkillsSection()),
+                ),
+                Obx(
+                  () => NavLink(
+                      title: 'عني',
+                      isHover: controller.hoverStates[1].value,
+                      onHover: (value) => controller.onHover(1, value),
+                      onTap: () => controller.goToAboutSection()),
+                ),
+                Obx(
+                  () => NavLink(
+                      title: 'الرئيسية',
+                      isHover: controller.hoverStates[0].value,
+                      onHover: (value) => controller.onHover(0, value),
+                      onTap: () => controller.goToMainSection()
+                      // onTap: ,
+                      ),
                 ),
               ],
             )
