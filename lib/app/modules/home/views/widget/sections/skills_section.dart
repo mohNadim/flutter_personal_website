@@ -85,8 +85,10 @@ class _SkillsSectionState extends State<SkillsSection>
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: Get.width,
-      height: Get.height,
+      constraints: BoxConstraints(
+        minHeight: Get.height,
+        minWidth: Get.width,
+      ),
       alignment: Alignment.center,
       child: AnimatedBuilder(
         animation: _controller,
@@ -188,7 +190,7 @@ class _SkillItemState extends State<SkillItem>
       widget.isHover ? _hoverController.forward() : _hoverController.reverse();
     }
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return MouseRegion(

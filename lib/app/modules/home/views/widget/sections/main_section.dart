@@ -189,7 +189,9 @@ class _MainSectionState extends State<MainSection>
               builder: (context, _) {
                 return Container(
                   height: Get.height - 70,
-                  constraints: 
+                  constraints: BoxConstraints(
+                    minHeight: Get.height - 70,
+                  ),
                   child: Stack(
                     children: [
                       Align(
