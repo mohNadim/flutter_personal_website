@@ -3,13 +3,7 @@ import 'package:flutter_personal_website/core/constant/skills_card.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
-  List<RxBool> hoverStates = List.generate(4, (_) => false.obs);
-  
-  List<RxBool> skillsHoverStates =
-      List.generate(skills.length, (_) => false.obs);
-
-  List<RxBool> projectCardsHoverStates =
-      List.generate(skills.length, (_) => false.obs);
+  late ScrollController scrollController;
 
   RxDouble offset = 0.0.obs;
 
@@ -17,81 +11,61 @@ class HomeController extends GetxController {
   final isAboutSectionAnimate = false.obs;
   final isSkillsSectionAnimate = false.obs;
   final isProjectSectionAnimate = false.obs;
-  late ScrollController scrollController;
+  final isContactSectionAnimate = false.obs;
 
-  final List<double> _steps = [0, 50, 100, 150, 200]; // النقاط التي ينقل إليها
-  int _currentStep = 0;
-  double _lastOffset = 0;
+  List<RxBool> hoverStates = List.generate(4, (_) => false.obs);
+  List<RxBool> skillsHoverStates =
+      List.generate(skills.length, (_) => false.obs);
+  List<RxBool> projectCardsHoverStates =
+      List.generate(skills.length, (_) => false.obs);
+
+  final double sectionHeight = Get.height - 70;
 
   @override
   void onInit() {
     super.onInit();
     scrollController = ScrollController();
-    scrollController.addListener(
-      () {
-        // print(scrollController.position.pixels);
-        _handleScroll();
-      },
-    );
+    scrollController.addListener(_handleScroll);
+
+    // تأخير طفيف لضمان ربط الـ ScrollController قبل الفحص
+    Future.delayed(Duration(milliseconds: 100), _handleScroll);
   }
 
   void _handleScroll() {
+    if (!scrollController.hasClients) return;
+
     double offset = scrollController.offset;
+    this.offset.value = offset;
 
-    if (!scrollController.position.isScrollingNotifier.value) return;
+    double triggerFactor = 0.3;
 
-    if (offset > _lastOffset && _currentStep < _steps.length - 1) {
-      _currentStep++;
-      print("up to  $_currentStep");
-      _animateToStep();
-      _handleControllers();
-    } else if (offset < _lastOffset && _currentStep > 0) {
-      _currentStep--;
-      print("down to  $_currentStep");
-      _animateToStep();
-      _handleControllers();
-    }
+    
 
-    _lastOffset = offset;
-  }
-
-  void _animateToStep() {
-    scrollController.jumpTo(
-      _steps[_currentStep],
-    );
-  }
-
-  void _handleControllers() {
-    if (_currentStep == 0) {
-      isMainSectionAnimate.value = false;
-      isAboutSectionAnimate.value = false;
-      isSkillsSectionAnimate.value = false;
-      isProjectSectionAnimate.value = false;
-    } else if (_currentStep == 1) {
-      isMainSectionAnimate.value = true;
+    // About Section
+    if (offset >= sectionHeight * 1 - sectionHeight * triggerFactor &&
+        offset < sectionHeight * 2) {
       isAboutSectionAnimate.value = true;
-      isSkillsSectionAnimate.value = false;
-    } else if (_currentStep == 2) {
-      isAboutSectionAnimate.value = false;
-      isSkillsSectionAnimate.value = true;
-      isProjectSectionAnimate.value = false;
-    } else if (_currentStep == 3) {
-      isSkillsSectionAnimate.value = false;
-      isProjectSectionAnimate.value = true;
-    } else if (_currentStep == 4) {
-      isProjectSectionAnimate.value = false;
     }
-  }
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
+    // Skills Section
+    if (offset >= sectionHeight * 2 - sectionHeight * triggerFactor &&
+        offset < sectionHeight * 3) {
+      isSkillsSectionAnimate.value = true;
+    }
 
-  @override
-  void onClose() {
-    scrollController.dispose();
-    super.onClose();
+    // Projects Section
+    if (offset >= sectionHeight * 3 - sectionHeight * triggerFactor &&
+        offset < sectionHeight * 4) {
+      isProjectSectionAnimate.value = true;
+    }
+
+    // Contact Section
+    if (offset >= sectionHeight * 4 - sectionHeight * triggerFactor) {
+      isContactSectionAnimate.value = true;
+    }
+
+    // Debug فقط
+    // print('offset: $offset | main: ${isMainSectionAnimate.value}');
   }
 
   void onHover(int index, bool value) {
@@ -101,9 +75,14 @@ class HomeController extends GetxController {
   void onHoverSkill(int index, bool value) {
     skillsHoverStates[index].value = value;
   }
+
   void onHoverProjectCard(int index, bool value) {
     projectCardsHoverStates[index].value = value;
   }
 
-  bool isMobile() => Get.width < 600;
+  @override
+  void onClose() {
+    scrollController.dispose();
+    super.onClose();
+  }
 }
