@@ -29,6 +29,8 @@ class _ProjectsSectionState extends State<ProjectsSection>
   late Animation<Offset> slideToLeftAnimation;
   late Animation<double> fadeAnimation;
 
+  bool isButtonHover = false;
+
   @override
   void initState() {
     super.initState();
@@ -76,9 +78,11 @@ class _ProjectsSectionState extends State<ProjectsSection>
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
       width: Get.width,
-      height: Get.height,
+      constraints: BoxConstraints(
+        minHeight: Get.height,
+      ),
       child: AnimatedBuilder(
         animation: _controller,
         builder: (context, child) {
@@ -100,8 +104,7 @@ class _ProjectsSectionState extends State<ProjectsSection>
                 ),
               ),
               Container(
-                // color: Colors.green,
-                width: Get.width * 0.7,
+                constraints: BoxConstraints(maxWidth: Get.width * 0.7),
                 child: Wrap(
                   textDirection: TextDirection.rtl,
                   spacing: 20,
@@ -140,23 +143,29 @@ class _ProjectsSectionState extends State<ProjectsSection>
                 opacity: fadeAnimation,
                 child: SlideTransition(
                   position: slideToUpAnimation,
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      padding: EdgeInsets.symmetric(
-                        vertical: 30,
-                        horizontal: 40,
+                  child: MouseRegion(
+                    onEnter: (event) => setState(() => isButtonHover = true),
+                    onExit: (event) => setState(() => isButtonHover = false),
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        padding: EdgeInsets.symmetric(
+                          vertical: 30,
+                          horizontal: 40,
+                        ),
+                        backgroundColor: isButtonHover
+                            ? AppColor.hoverPrimaryColor
+                            : AppColor.primaryColor,
+                        overlayColor: Colors.transparent,
+                        elevation: 0,
                       ),
-                      backgroundColor: AppColor.primaryColor,
-                      overlayColor: Colors.transparent,
-                      elevation: 0,
-                    ),
-                    child: Text(
-                      "عرض كل المشاريع",
-                      style: GoogleFonts.cairo(
-                        color: AppColor.lightColor,
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
+                      child: Text(
+                        "عرض كل المشاريع",
+                        style: GoogleFonts.cairo(
+                          color: AppColor.lightColor,
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),
