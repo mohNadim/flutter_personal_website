@@ -90,7 +90,7 @@ class _ContactUsState extends State<ContactUs>
         double start = index * 0.25;
         double end = start + 0.25;
 
-        return Tween<Offset>(begin: Offset(0.2, 0), end: Offset.zero).animate(
+        return Tween<Offset>(begin: Offset(-0.2, 0), end: Offset.zero).animate(
           CurvedAnimation(
             parent: _controller,
             curve: Interval(start, end, curve: Curves.linear),

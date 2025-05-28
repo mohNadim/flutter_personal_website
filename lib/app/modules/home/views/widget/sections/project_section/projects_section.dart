@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_personal_website/app/modules/home/controllers/home_controller.dart';
 import 'package:flutter_personal_website/app/modules/home/views/widget/sections/project_section/project_card.dart';
 import 'package:flutter_personal_website/app/modules/home/views/widget/sections/section_title.dart';
+import 'package:flutter_personal_website/app/routes/app_pages.dart';
 import 'package:flutter_personal_website/core/constant/colors.dart';
 import 'package:flutter_personal_website/core/constant/projects_cards.dart';
 import 'package:flutter_personal_website/core/models/project_model.dart';
@@ -147,7 +148,9 @@ class _ProjectsSectionState extends State<ProjectsSection>
                     onEnter: (event) => setState(() => isButtonHover = true),
                     onExit: (event) => setState(() => isButtonHover = false),
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.toNamed(Routes.PROJECTS);
+                      },
                       style: ElevatedButton.styleFrom(
                         padding: EdgeInsets.symmetric(
                           vertical: 30,

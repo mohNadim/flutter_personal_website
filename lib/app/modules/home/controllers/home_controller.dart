@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_personal_website/core/constant/projects_cards.dart';
 import 'package:flutter_personal_website/core/constant/skills_card.dart';
 import 'package:get/get.dart';
 
@@ -17,7 +18,7 @@ class HomeController extends GetxController {
   List<RxBool> skillsHoverStates =
       List.generate(skills.length, (_) => false.obs);
   List<RxBool> projectCardsHoverStates =
-      List.generate(skills.length, (_) => false.obs);
+      List.generate(projectCards.length, (_) => false.obs);
 
   final double sectionHeight = Get.height - 70;
 

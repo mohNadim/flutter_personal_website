@@ -28,4 +28,173 @@ List<ProjectModel> projectCards = [
       "animation",
     ],
   ),
+  ProjectModel(
+    image: "assets/temp_pic.jpg",
+    projectName: "المشروع الثاني",
+    projectdiscreption:
+        "  وصف تفصيلي للمشروع الأول وأهم مميزاتهوصف تفصيلي للمشروع الأول وأهم مميزاته",
+    tags: [
+      "flutter",
+      "bloc",
+      "singlton",
+      "supabase",
+      "animation",
+    ],
+  ),
+  ProjectModel(
+    image: "assets/temp_pic.jpg",
+    projectName: "المشروع الثاني",
+    projectdiscreption:
+        "  وصف تفصيلي للمشروع الأول وأهم مميزاتهوصف تفصيلي للمشروع الأول وأهم مميزاته",
+    tags: [
+      "flutter",
+      "bloc",
+      "singlton",
+      "supabase",
+      "animation",
+    ],
+  ),
+  ProjectModel(
+    image: "assets/temp_pic.jpg",
+    projectName: "المشروع الثاني",
+    projectdiscreption:
+        "  وصف تفصيلي للمشروع الأول وأهم مميزاتهوصف تفصيلي للمشروع الأول وأهم مميزاته",
+    tags: [
+      "flutter",
+      "bloc",
+      "singlton",
+      "supabase",
+      "animation",
+    ],
+  ),
+  ProjectModel(
+    image: "assets/temp_pic.jpg",
+    projectName: "المشروع الثاني",
+    projectdiscreption:
+        "  وصف تفصيلي للمشروع الأول وأهم مميزاتهوصف تفصيلي للمشروع الأول وأهم مميزاته",
+    tags: [
+      "flutter",
+      "bloc",
+      "singlton",
+      "supabase",
+      "animation",
+    ],
+  ),
+  ProjectModel(
+    image: "assets/temp_pic.jpg",
+    projectName: "المشروع الثاني",
+    projectdiscreption:
+        "  وصف تفصيلي للمشروع الأول وأهم مميزاتهوصف تفصيلي للمشروع الأول وأهم مميزاته",
+    tags: [
+      "flutter",
+      "bloc",
+      "singlton",
+      "supabase",
+      "animation",
+    ],
+  ),
+  ProjectModel(
+    image: "assets/temp_pic.jpg",
+    projectName: "المشروع الثاني",
+    projectdiscreption:
+        "  وصف تفصيلي للمشروع الأول وأهم مميزاتهوصف تفصيلي للمشروع الأول وأهم مميزاته",
+    tags: [
+      "flutter",
+      "bloc",
+      "singlton",
+      "supabase",
+      "animation",
+    ],
+  ),
+  ProjectModel(
+    image: "assets/temp_pic.jpg",
+    projectName: "المشروع الثاني",
+    projectdiscreption:
+        "  وصف تفصيلي للمشروع الأول وأهم مميزاتهوصف تفصيلي للمشروع الأول وأهم مميزاته",
+    tags: [
+      "flutter",
+      "bloc",
+      "singlton",
+      "supabase",
+      "animation",
+    ],
+  ),
+  ProjectModel(
+    image: "assets/temp_pic.jpg",
+    projectName: "المشروع الثاني",
+    projectdiscreption:
+        "  وصف تفصيلي للمشروع الأول وأهم مميزاتهوصف تفصيلي للمشروع الأول وأهم مميزاته",
+    tags: [
+      "flutter",
+      "bloc",
+      "singlton",
+      "supabase",
+      "animation",
+    ],
+  ),
+  ProjectModel(
+    image: "assets/temp_pic.jpg",
+    projectName: "المشروع الثاني",
+    projectdiscreption:
+        "  وصف تفصيلي للمشروع الأول وأهم مميزاتهوصف تفصيلي للمشروع الأول وأهم مميزاته",
+    tags: [
+      "flutter",
+      "bloc",
+      "singlton",
+      "supabase",
+      "animation",
+    ],
+  ),
+  ProjectModel(
+    image: "assets/temp_pic.jpg",
+    projectName: "المشروع الثاني",
+    projectdiscreption:
+        "  وصف تفصيلي للمشروع الأول وأهم مميزاتهوصف تفصيلي للمشروع الأول وأهم مميزاته",
+    tags: [
+      "flutter",
+      "bloc",
+      "singlton",
+      "supabase",
+      "animation",
+    ],
+  ),
+  ProjectModel(
+    image: "assets/temp_pic.jpg",
+    projectName: "المشروع الثاني",
+    projectdiscreption:
+        "  وصف تفصيلي للمشروع الأول وأهم مميزاتهوصف تفصيلي للمشروع الأول وأهم مميزاته",
+    tags: [
+      "flutter",
+      "bloc",
+      "singlton",
+      "supabase",
+      "animation",
+    ],
+  ),
+  ProjectModel(
+    image: "assets/temp_pic.jpg",
+    projectName: "المشروع الثاني",
+    projectdiscreption:
+        "  وصف تفصيلي للمشروع الأول وأهم مميزاتهوصف تفصيلي للمشروع الأول وأهم مميزاته",
+    tags: [
+      "flutter",
+      "bloc",
+      "singlton",
+      "supabase",
+      "animation",
+    ],
+  ),
+  ProjectModel(
+    image: "assets/temp_pic.jpg",
+    projectName: "المشروع الثاني",
+    projectdiscreption:
+        "  وصف تفصيلي للمشروع الأول وأهم مميزاتهوصف تفصيلي للمشروع الأول وأهم مميزاته",
+    tags: [
+      "flutter",
+      "bloc",
+      "singlton",
+      "supabase",
+      "animation",
+    ],
+  ),
 ];
